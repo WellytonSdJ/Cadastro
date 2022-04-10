@@ -1,0 +1,127 @@
+*{
+  --primary-blue: #4b7bec;
+  --primary-white: #fafafa;
+}
+
+.box-container{
+  width: 100%;
+  height: 100%;
+  /* background: var(--primary-white); */
+}
+
+/* HEADER */
+.box-header{
+  background: var(--primary-blue);
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.header-text{
+  /* background: black; */
+  color: var(--primary-white);
+  font-family: roboto, arial, helvetica, sans-serif;
+  font-size: 18px;
+  margin: 0 0 0 16px;
+  display: flex;
+  
+  align-items: center;
+}
+
+.exit-btn{
+  color: var(--primary-white);
+  font-size: 30px;
+  font-weight: bold;
+
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
+}
+
+.material-icons.md-48 {
+  font-family: 'Material Icons';
+  font-weight: bold;
+  font-style: normal;
+  font-size: 48px;
+  margin-top: 4px;
+  margin-right: 8px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* BOX CONTENT */
+.box-content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.box__left {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-white);
+}
+
+.material-icons.md-lock {
+  font-family: 'Material Icons';
+  color: var(--primary-blue);
+  font-weight: bold;
+  font-style: normal;
+  font-size: 56px;
+  margin-top: 4px;
+  margin-right: 8px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.box__right {
+  background: var(--primary-white);
+  /* background: red; */
+  width: 70%;
+  height: 100%;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

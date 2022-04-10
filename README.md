@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+dependencias: 
+ - CRA: para inicialização do projeto;
+ - material-ui + styled-Components: para parte da estilização
+ - validatejs: para validações do formulário
+ - https://regex101.com/ : para criar e testar minhas expressões regulares.
+---------------------------------------------------------------
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+ROTAS: https://acme-cadastro.herokuapp.com/swagger/index.html
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+LISTAR:
+https://acme-cadastro.herokuapp.com/Usuario
 
-### `npm test`
+LISTAR USER:
+https://acme-cadastro.herokuapp.com/Usuario/1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ALTERA SENHA
+`https://acme-cadastro.herokuapp.com/alterar-senha/${ìd}`
+senhaAtual: String
+novaSenha: String
 
-### `npm run build`
+---------------------------------------------------------------
+Os dados devem ser consumidos da API https://acme-cadastro.herokuapp.com/swagger/index.html
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Deve ser listado os dados do usuário que será escolhido na tela. Então deve apresentar um campo de busca e uma listagem apresentando o nome.
+- Os dados devem ser apresentados na tela;
+- Ao clicar em alterar senha, deve ser apresentando uma tela para alterar a senha;
+- Para alterar a senha o usuário deve informar a senha anterior;
+- O campo de nova senha e confirmar senha devem ser os mesmos;
+- A nova senha deve ter um padrão especifico da seguinte forma:
+VALIDAÇÃO
+    - Deve ter um caractere especial;
+    - Deve ter letras;
+    - Uma letra deve ser maiuscula;
+    - Deve ter numeros;
+    - O tamanho mínimo deve ser de 8 caracteres;
+    - O tamanho máximo deve ser de 12 caracteres.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Ao cancelar deve voltar para a tela anterior, permitindo escolher outro cadastro;
+- Ao salvar os dados da nova senha,  deve ser validado a senha anterior ;
+- Com o fluxo correto, ao alterar na API deve mostrar a tela de sucesso.
+- Atenção, há um erro de design nos protótipos e na regra citada acima.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+O prazo de entrega é até dia 12/04/2022
+---------------------------------------------------------------
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---------------------------------------------------------------
+dia 02 - 05/04
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- requisições das listas OK
+- layout da toolbar OK
+---------------------------------------------------------------
+dia 03 - 06/04 19:40 - 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-começo criação de rotas
+-ajustes na navbar
+  - navegação para home OK
+  - busca deve chamar tela de user - AINDA FALTA ISSO
 
-## Learn More
+-ajustes na ListComponent
+  - ao clicar nos itens direcionar para página de user/id
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-criar layout da Userscreen
+---------------------------------------------------------------
+dia 04 - 09/04 - 16:08
+ - preencher os dados do user
+ - enviar id para Modal 
+ - trycatch da rota para troca de senha
+ ---------------------------------------------------------------
+ dia 05 - 10/04 - 11:01
+ - validação do formulário
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# AINDA FALTA
+-> USERSCREEN
+ -[x] preencher os dados do user
+ -[x] enviar id para Modal 
+ -[] Estilizar userscreen
+ -[] lógica (puxar user com id na rota) -> isso vem do HomeScreen
+ -> MODAL
+ -[] Estilizar Modal
+ -Lógica do modal
+  -[x] trycatch da rota para troca de senha
+  -[] validação de formulário
+  -[] Estilizar Modal - success
+  -[] Estilizar Modal - Fail
 
-### Code Splitting
+ -[] Estilizar HomeScreen 
+ 
+ - Responsividade:
+ -[] HomeScreen
+ -[] UserScreen
+ -[] modal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+permitindo caracteres de A a Z maiuscula e minuscula
+permitindo numeros de 0 a 9
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[])
