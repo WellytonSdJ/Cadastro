@@ -1,8 +1,9 @@
 import { Box, Button, Modal, Toolbar, AppBar, Typography } from "@mui/material";
 import axios from 'axios';
-import './styles.css'
 import validation from '../../utils/validation'
 import { useState } from "react";
+import './styles.css'
+import { Link as RouterLink } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -83,7 +84,7 @@ function PasswordModal({
               <span className="header-text">Alterando Senha</span>
               {/* criar rota de saída para página inicial */}
               <button onClick={validation}>TESTE VALIDACAO</button>
-              <button className="exit-btn">
+              <button className="exit-btn" onClick={handlePwd}>
                 <span className="material-icons md-48">
                   clear
                 </span>
@@ -134,9 +135,8 @@ function PasswordModal({
                   </div>
                   <div className="box__right-item">
                     <div className="box__right-buttons">
-                      {/* DEVE LEVAR PARA PAGINA INICIAL */}
-                      <button onClick={handlePwd}>Cancelar</button>
-                      <button onClick={validation} type="button" disabled >Confirmar</button>
+                      <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
+                      <Button color="inherit" variant="contained" type="button" >Confirmar</Button>
                     </div>
                   </div>
                 </form>

@@ -20,12 +20,11 @@ function HomeScreen() {
 
   useEffect(()=> {
     getUsers();
-    console.log('useEffect Users ->',users)// TESTE
+    // console.log('useEffect Users ->',users)// TESTE
   }, []);
 
   return (
     <>
-
     <ListComponent users={users}/>
     </>
   )

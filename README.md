@@ -25,9 +25,11 @@ novaSenha: String
 ---------------------------------------------------------------
 Os dados devem ser consumidos da API https://acme-cadastro.herokuapp.com/swagger/index.html
 
-- Deve ser listado os dados do usuário que será escolhido na tela. Então deve apresentar um campo de busca e uma listagem apresentando o nome.
-- Os dados devem ser apresentados na tela;
-- Ao clicar em alterar senha, deve ser apresentando uma tela para alterar a senha;
+- Deve ser listado os dados do usuário que será escolhido na tela. Então deve apresentar um campo de busca e uma listagem apresentando o nome. OK
+
+- Os dados devem ser apresentados na tela; OK
+
+- Ao clicar em alterar senha, deve ser apresentando uma tela para alterar a senha; OK
 - Para alterar a senha o usuário deve informar a senha anterior;
 - O campo de nova senha e confirmar senha devem ser os mesmos;
 - A nova senha deve ter um padrão especifico da seguinte forma:
@@ -40,7 +42,7 @@ VALIDAÇÃO
     - O tamanho máximo deve ser de 12 caracteres.
 
 
-- Ao cancelar deve voltar para a tela anterior, permitindo escolher outro cadastro;
+- Ao cancelar deve voltar para a tela anterior, permitindo escolher outro cadastro; OK
 - Ao salvar os dados da nova senha,  deve ser validado a senha anterior ;
 - Com o fluxo correto, ao alterar na API deve mostrar a tela de sucesso.
 - Atenção, há um erro de design nos protótipos e na regra citada acima.
@@ -76,6 +78,8 @@ dia 04 - 09/04 - 16:08
  - validação do formulário
 
 # AINDA FALTA
+-> HomeScreen
+ -[x] direcionar rota pra userScreen
 -> USERSCREEN
  -[x] preencher os dados do user
  -[x] enviar id para Modal 

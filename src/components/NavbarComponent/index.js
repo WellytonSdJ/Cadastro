@@ -63,13 +63,7 @@ export default function NavbarComponent() {
               home
             </span>
             Home
-          </Button>
-          <Button color="inherit" component={RouterLink} to='/user/1'>
-            <span className="material-icons">
-              home
-            </span>
-            user
-          </Button>
+          </Button>         
           <IconButton
             size="large"
             edge="start"
@@ -86,18 +80,19 @@ export default function NavbarComponent() {
             >
             Cadastros
           </Typography>
-          <Search>
+
+          {/* DEPOIS MECHER NESSE BUSCAR */}
+          {/* <Search>
             <SearchIconWrapper>
               <span className="material-icons">
                 search
               </span>
-              {/* <SearchIcon /> */}
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Buscar"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

@@ -6,25 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import { Link } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-
-//teste
-const clientes = [
-  {
-    nome: "fulano 1"
-  },
-  {
-    nome: "fulano 2"
-  },
-  {
-    nome: "fulano 3"
-  },
-  {
-    nome: "fulano 4"
-  },
-  {
-    nome: "fulano 5"
-  },
-]
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function ListComponent({ users }) {
   return (
@@ -43,9 +25,8 @@ export default function ListComponent({ users }) {
         ) : users.map( item => 
         (
           <ListItem disablePadding key={item.id}>
-            <ListItemButton>
+            <ListItemButton component={RouterLink} to={`/user/${item.id}`}> {/*ao clicar no item direciona para userlist*/}
               <ListItemText primary={item.nome} >
-              <Link to={`/user/${item.id}`}/>
               </ ListItemText>
             </ListItemButton>
           </ListItem>
