@@ -5,6 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Modal, Toolbar, AppBar, Typography } from "@mui/material";
 import validation from '../../utils/validation'
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 
 
 const style = {
@@ -35,20 +36,33 @@ function PasswordModal({
   id }) {
   let userId = id; // por algum motivo, não resgata direto o ID enviado pelo componente PAI, quando eu tento chamar no axios, então encapsulei dentro de um variável
 
-  //react-hook-form
+  const [openSuccessModal, setOpenSuccessModal] = useState(0)
+  /*logica do modal 
+  0 = alterar senha;
+  1 = sucesso
+  2 = falha
+  */
+
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors }
+    formState: { errors },
+    reset
   } = useForm({
+    defaultValues: {
+      currentPassword: '',
+      newPassword:'',
+      currentPassword: ''
+    },
     resolver: yupResolver(validation)
   });
 
-  const changePassword = async (data) => {    
-    console.log('dados changePassword -> ', data)
+  const changePassword = async (data) => {
+    console.log('data ->',data)
     try {
-      let response = await axios({
+      await axios({
         method: 'post',
         url: `https://acme-cadastro.herokuapp.com/usuario/alterar-senha/${userId}`,
         data: {
@@ -56,14 +70,99 @@ function PasswordModal({
           novaSenha: data.newPassword
         }
       })
-      console.log('foi! -> ', response)   // CRIAR ROTAS DE SUCESSO E FALHA
+      setOpenSuccessModal(1)
+      // caso sucesso setOpen para o modal de sucesso!
     } catch (err) {
       console.error(err)
+      setOpenSuccessModal(2)
+    } finally {
+      reset(); // limpe os campos
     }
+
   }
 
-  return (
-    <>
+  if (openSuccessModal === 0) {
+    return (
+      <>
+        <Modal
+          open={togglePassword}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style }}>
+            <div className="box-container">
+              <div className="box-header">
+                <span className="header-text">Alterando Senha</span>
+                <button className="exit-btn" onClick={handlePwd}>
+                  <span className="material-icons md-48">
+                    clear
+                  </span>
+                </button>
+              </div>
+              <div className="box-content">
+
+                {/* SEPARAR CONTEUDO DIREITA / ESQUERDA */}
+                < div className="box__left">
+                  <span className="material-icons md-lock">
+                    lock
+                  </span>
+                </div>
+                <div className="box__right">
+                  <form onSubmit={handleSubmit(changePassword)}>
+                    <div className="fields">
+                      <label>Senha Atual</label>
+                      <input
+                        type="password"
+                        name="currentPassword"
+                        {...register("currentPassword")}
+                        id="currentPassword"
+                        className="inputPassword"
+                        placeholder="Insira sua senha"
+                      />
+                      <p className="error-message">{errors.currentPassword?.message}</p>
+                    </div>
+
+                    <div className="fields">
+                      <label>Nova Senha</label>
+                      <input
+                        type="password"
+                        name="newPassword"
+                        {...register("newPassword")}
+                        id="newPassword"
+                        className="inputPassword"
+                        placeholder="Insira sua nova senha"
+                      />
+                      <p className="error-message">{errors.newPassword?.message}</p>
+                    </div>
+
+                    <div className="fields">
+                      <label>Confirme a Nova Senha</label>
+                      <input
+                        type="password"
+                        name="confirmNewPassword"
+                        {...register("confirmNewPassword")}
+                        id="confirmNewPassword"
+                        className="inputPassword"
+                        placeholder="Confirme a nova Senha"
+                      />
+                      <p className="error-message">{errors.confirmNewPassword?.message}</p>
+                    </div>
+                    <div className="fields">
+                      <div className="box__right-buttons">
+                        <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
+                        <Button color="inherit" variant="contained" type="submit" >Confirmar</Button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </Box>
+        </Modal>
+      </>
+    );
+  } else if (openSuccessModal === 1) {
+    return (
       <Modal
         open={togglePassword}
         aria-labelledby="child-modal-title"
@@ -73,73 +172,50 @@ function PasswordModal({
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
-              <button className="exit-btn" onClick={handlePwd}>
-                <span className="material-icons md-48">
-                  clear
-                </span>
+              <button className="exit-btn" onClick={() => { handlePwd(); setOpenSuccessModal(0) }}>
+                <span className="material-icons md-48">clear</span>
               </button>
             </div>
             <div className="box-content">
-              {/* SEPARAR CONTEUDO DIREITA / ESQUERDA */}
-              <div className="box__left">
-                <span className="material-icons md-lock">
-                  lock
+              <div className="box-content-success">
+                <span class="material-icons md-48">
+                  check_circle
                 </span>
-              </div>
-              <div className="box__right">
-                <form onSubmit={handleSubmit(changePassword)}>
-                  <div className="fields">
-                    <label>Senha Atual</label>
-                    <input
-                      type="password"
-                      name="currentPassword"
-                      {...register("currentPassword")}
-                      id="currentPassword"
-                      className="inputPassword"
-                      placeholder="Insira sua senha"
-                    />
-                    <p className="error-message">{errors.currentPassword?.message}</p>
-                  </div>
-
-                  <div className="fields">
-                    <label>Nova Senha</label>
-                    <input
-                      type="password"
-                      name="newPassword"
-                      {...register("newPassword")}
-                      id="newPassword"
-                      className="inputPassword"
-                      placeholder="Insira sua nova senha"
-                    />
-                    <p className="error-message">{errors.newPassword?.message}</p>
-                  </div>
-
-                  <div className="fields">
-                    <label>Confirme a Nova Senha</label>
-                    <input
-                      type="password"
-                      name="confirmNewPassword"
-                      {...register("confirmNewPassword")}
-                      id="confirmNewPassword"
-                      className="inputPassword"
-                      placeholder="Confirme a nova Senha"
-                    />
-                    <p className="error-message">{errors.confirmNewPassword?.message}</p>
-                  </div>
-                  <div className="fields">
-                    <div className="box__right-buttons">
-                      <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
-                      <Button color="inherit" variant="contained" type="submit" >Confirmar</Button>
-                    </div>
-                  </div>
-                </form>
+                <h1>Senha alterada com sucesso!</h1>
               </div>
             </div>
           </div>
         </Box>
       </Modal>
-    </>
-  );
+    )
+  } else {
+    return (
+      <Modal
+        open={togglePassword}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style }}>
+          <div className="box-container">
+            <div className="box-header">
+              <span className="header-text">Alterando Senha</span>
+              <button className="exit-btn" onClick={() => { handlePwd(); setOpenSuccessModal(0) }}>
+                <span className="material-icons md-48">clear</span>
+              </button>
+            </div>
+            <div className="box-content">
+              <div className="box-content-success">
+                <span class="material-icons md-48">
+                  highlight_off
+                </span>
+                <h1>Senha incorreta!</h1>
+              </div>
+            </div>
+          </div>
+        </Box>
+      </Modal>
+    )
+  }
 }
 
 export default PasswordModal;

@@ -75,7 +75,8 @@ dia 04 - 09/04 - 16:08
  - trycatch da rota para troca de senha
  ---------------------------------------------------------------
  dia 05 - 10/04 - 11:01
- - validação do formulário
+ - validação do formulário OK
+ - rotas
 
 # AINDA FALTA
 -> HomeScreen
@@ -84,12 +85,12 @@ dia 04 - 09/04 - 16:08
  -[x] preencher os dados do user
  -[x] enviar id para Modal 
  -[] Estilizar userscreen
- -[] lógica (puxar user com id na rota) -> isso vem do HomeScreen
+ -[x] lógica (puxar user com id na rota) -> isso vem do HomeScreen
  -> MODAL
  -[] Estilizar Modal
  -Lógica do modal
   -[x] trycatch da rota para troca de senha
-  -[] validação de formulário
+  -[x] validação de formulário
   -[] Estilizar Modal - success
   -[] Estilizar Modal - Fail
 
@@ -100,7 +101,3 @@ dia 04 - 09/04 - 16:08
  -[] UserScreen
  -[] modal
 
-permitindo caracteres de A a Z maiuscula e minuscula
-permitindo numeros de 0 a 9
-
- ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[])
