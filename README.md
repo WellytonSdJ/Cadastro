@@ -34,16 +34,16 @@ Os dados devem ser consumidos da API https://acme-cadastro.herokuapp.com/swagger
 - O campo de nova senha e confirmar senha devem ser os mesmos;
 - A nova senha deve ter um padrão especifico da seguinte forma:
 VALIDAÇÃO
-    - Deve ter um caractere especial;
-    - Deve ter letras;
-    - Uma letra deve ser maiuscula;
-    - Deve ter numeros;
-    - O tamanho mínimo deve ser de 8 caracteres;
-    - O tamanho máximo deve ser de 12 caracteres.
+    - Deve ter um caractere especial;OK
+    - Uma letra deve ser maiuscula; OK
+    - Deve ter numeros; OK
+    - Deve ter letras; OK
+    - O tamanho mínimo deve ser de 8 caracteres; OK
+    - O tamanho máximo deve ser de 12 caracteres. OK
 
 
 - Ao cancelar deve voltar para a tela anterior, permitindo escolher outro cadastro; OK
-- Ao salvar os dados da nova senha,  deve ser validado a senha anterior ;
+- Ao salvar os dados da nova senha,  deve ser validado a senha anterior ; OK
 - Com o fluxo correto, ao alterar na API deve mostrar a tela de sucesso.
 - Atenção, há um erro de design nos protótipos e na regra citada acima.
 

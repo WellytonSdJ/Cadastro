@@ -1,9 +1,11 @@
-import { Box, Button, Modal, Toolbar, AppBar, Typography } from "@mui/material";
-import axios from 'axios';
-import validation from '../../utils/validation'
-import { useState } from "react";
 import './styles.css'
+import axios from 'axios';
+import { useForm } from "react-hook-form";
 import { Link as RouterLink } from 'react-router-dom';
+import { Box, Button, Modal, Toolbar, AppBar, Typography } from "@mui/material";
+import validation from '../../utils/validation'
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 const style = {
   position: 'absolute',
@@ -24,44 +26,37 @@ const style = {
   direction: 'column'
 };
 
+
+
+
 function PasswordModal({
   togglePassword,
   handlePwd,
   id }) {
-  const [currentPassword, setCurrentPassword] = useState('')
-  const [newPassword, setNewPassword] = useState('')
-  const [confirmedNewPassword, setConfirmedNewPassword] = useState('')
-  // const [formData, setFormData] = useState({})
-
-  const handleCurrentPassword = (e) => {
-    let data = (e.target.value)
-    setCurrentPassword(data)
-  }
-  const handleNewPassword = (e) => {
-    let data = (e.target.value)
-    setNewPassword(data)
-  }
-
-
-
-  //teste
   let userId = id; // por algum motivo, não resgata direto o ID enviado pelo componente PAI, quando eu tento chamar no axios, então encapsulei dentro de um variável
 
+  //react-hook-form
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(validation)
+  });
 
-  const changePassword = async (e) => {
-    //habilitar preventDefault
-    // chamar validação
-    // criar CONDICIONAL -> caso passe trycatch
-
+  const changePassword = async (data) => {    
+    console.log('dados changePassword -> ', data)
     try {
-      axios.post(`https://acme-cadastro.herokuapp.com/usuario/alterar-senha/${userId}`, null, {
-        params: {
-          senhaAtual: currentPassword,
-          novaSenha: newPassword
+      let response = await axios({
+        method: 'post',
+        url: `https://acme-cadastro.herokuapp.com/usuario/alterar-senha/${userId}`,
+        data: {
+          senhaAtual: data.currentPassword,
+          novaSenha: data.newPassword
         }
       })
-      alert('Senha alterada com sucesso!')
-      console.log('foi!')   // CRIAR ROTAS DE SUCESSO E FALHA
+      console.log('foi! -> ', response)   // CRIAR ROTAS DE SUCESSO E FALHA
     } catch (err) {
       console.error(err)
     }
@@ -74,16 +69,10 @@ function PasswordModal({
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        {/* NAVBAR - separando cima/baixo*/}
         <Box sx={{ ...style }}>
-          {/* ORGANIZANDO LAYOUT */}
-          {/* <div className="box"> */}
-          {/* SEPARAR O HEADER DO CONTEUDO */}
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
-              {/* criar rota de saída para página inicial */}
-              <button onClick={validation}>TESTE VALIDACAO</button>
               <button className="exit-btn" onClick={handlePwd}>
                 <span className="material-icons md-48">
                   clear
@@ -98,61 +87,55 @@ function PasswordModal({
                 </span>
               </div>
               <div className="box__right">
-                <form>
-                  <div className="box__right-item">
+                <form onSubmit={handleSubmit(changePassword)}>
+                  <div className="fields">
                     <label>Senha Atual</label>
                     <input
                       type="password"
                       name="currentPassword"
+                      {...register("currentPassword")}
                       id="currentPassword"
                       className="inputPassword"
-                      onChange={handleCurrentPassword}
                       placeholder="Insira sua senha"
                     />
+                    <p className="error-message">{errors.currentPassword?.message}</p>
                   </div>
 
-                  <div className="box__right-item">
+                  <div className="fields">
                     <label>Nova Senha</label>
                     <input
                       type="password"
                       name="newPassword"
+                      {...register("newPassword")}
                       id="newPassword"
                       className="inputPassword"
-                      onChange={handleNewPassword}
                       placeholder="Insira sua nova senha"
                     />
+                    <p className="error-message">{errors.newPassword?.message}</p>
                   </div>
 
-                  <div className="box__right-item">
+                  <div className="fields">
                     <label>Confirme a Nova Senha</label>
                     <input
                       type="password"
                       name="confirmNewPassword"
+                      {...register("confirmNewPassword")}
                       id="confirmNewPassword"
                       className="inputPassword"
                       placeholder="Confirme a nova Senha"
                     />
+                    <p className="error-message">{errors.confirmNewPassword?.message}</p>
                   </div>
-                  <div className="box__right-item">
+                  <div className="fields">
                     <div className="box__right-buttons">
                       <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
-                      <Button color="inherit" variant="contained" type="button" >Confirmar</Button>
+                      <Button color="inherit" variant="contained" type="submit" >Confirmar</Button>
                     </div>
                   </div>
                 </form>
-                {/* TESTE */}
-                <button onClick={
-                  () => {
-                    // console.log('current ->', currentPassword),
-                      console.log('new ->', newPassword)
-                  }}>
-                  TESTE STATES
-                </button>
               </div>
             </div>
           </div>
-          {/* </div> */}
-          {/* ORGANIZANDO LAYOUT */}
         </Box>
       </Modal>
     </>
