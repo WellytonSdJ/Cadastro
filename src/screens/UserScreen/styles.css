@@ -18,7 +18,6 @@ main{
 }
 
 .box{
-  /* background-color: red; */
   background: var(--secondary-white);
   width: 80vw;
   border-radius: 6px;

@@ -63,7 +63,7 @@ export default function NavbarComponent() {
               home
             </span>
             Home
-          </Button>         
+          </Button>
           <IconButton
             size="large"
             edge="start"
@@ -77,11 +77,11 @@ export default function NavbarComponent() {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
+          >
             Cadastros
           </Typography>
 
-          {/* DEPOIS MECHER NESSE BUSCAR */}
+          {/* DEPOIS MEXER NESSE BUSCAR */}
           {/* <Search>
             <SearchIconWrapper>
               <span className="material-icons">

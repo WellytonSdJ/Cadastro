@@ -1,6 +1,6 @@
 .box-container{
-  /* background: var(--primary-white); */
-  background: red;
+  background: var(--secondary-white);
+  /* background: red; */
   width: 100%;
   height: 100%;
 }

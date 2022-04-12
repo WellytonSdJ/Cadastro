@@ -29,7 +29,7 @@ function UserScreen() {
 
   return (
     <>
-      <PasswordModal togglePassword={togglePassword} handlePwd={handlePwd} id={id} />
+      <PasswordModal togglePassword={togglePassword} handleClose={handlePwd} id={id} />
       <main>
         <div className="container">
           <h1>Meus Dados</h1>

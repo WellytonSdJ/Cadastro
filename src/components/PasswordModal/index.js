@@ -9,11 +9,11 @@ import { useState } from 'react';
 
 
 const style = {
-  position: 'absolute',
+  position: 'relative',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 700,
+  maxWidth: 700,
   height: 400,
   bgcolor: 'background.paper',
   boxShadow: 24,
@@ -31,7 +31,7 @@ const style = {
 
 function PasswordModal({
   togglePassword,
-  handlePwd,
+  handleClose,
   id }) {
   let userId = id; // por algum motivo, não resgata direto o ID enviado pelo componente PAI, quando eu tento chamar no axios, então encapsulei dentro de um variável
 
@@ -84,6 +84,7 @@ function PasswordModal({
       <>
         <Modal
           open={togglePassword}
+          onClose={handleClose}
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
           keepMounted
@@ -92,7 +93,7 @@ function PasswordModal({
             <div className="box-container">
               <div className="box-header">
                 <span className="header-text">Alterando Senha</span>
-                <button className="exit-btn" onClick={handlePwd}>
+                <button className="exit-btn" onClick={handleClose}>
                   <span className="material-icons md-48">
                     clear
                   </span>
@@ -165,6 +166,7 @@ function PasswordModal({
     return (
       <Modal
         open={togglePassword}
+        onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
@@ -172,7 +174,7 @@ function PasswordModal({
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
-              <button className="exit-btn" onClick={() => { handlePwd(); setOpenSuccessModal(0) }}>
+              <button className="exit-btn" onClick={() => { handleClose(); setOpenSuccessModal(0) }}>
                 <span className="material-icons md-48">clear</span>
               </button>
             </div>
@@ -192,6 +194,7 @@ function PasswordModal({
     return (
       <Modal
         open={togglePassword}
+        onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
@@ -199,7 +202,7 @@ function PasswordModal({
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
-              <button className="exit-btn" onClick={() => { handlePwd(); setOpenSuccessModal(0) }}>
+              <button className="exit-btn" onClick={() => { handleClose(); setOpenSuccessModal(0) }}>
                 <span className="material-icons md-48">clear</span>
               </button>
             </div>
