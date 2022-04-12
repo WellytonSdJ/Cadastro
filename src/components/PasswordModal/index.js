@@ -52,7 +52,7 @@ function PasswordModal({
     defaultValues: {
       currentPassword: '',
       newPassword: '',
-      currentPassword: ''
+      confirmPassword: ''
     },
     resolver: yupResolver(validation)
   });

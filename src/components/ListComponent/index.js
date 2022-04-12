@@ -2,8 +2,6 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-import { Link } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Link as RouterLink } from 'react-router-dom';
@@ -17,7 +15,6 @@ export default function ListComponent({ users }) {
       display:'flex', 
       justifyContent:'center',
       alignItems: 'center',
-      // bgcolor: 'red'
        }}>
       <nav aria-label="main mailbox folders">
       <List>          

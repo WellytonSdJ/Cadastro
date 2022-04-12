@@ -1,3 +1,10 @@
+
+![imagem 1](/assets/img1.png)
+![imagem 2](/assets/img2.png)
+![imagem 3](/assets/img3.png)
+![imagem 4](/assets/img4.png)
+
+
 # SOBRE O PROJETO:
 
  - todas telas tem a navbar para voltar à tela inicial (HOMESCREEN)

@@ -1,5 +1,4 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //screens
@@ -8,8 +7,6 @@ import UserScreen from './screens/UserScreen'
 
 //components
 import NavbarComponent from './components/NavbarComponent';
-// import NavbarComponent from './components/NavbarComponent';
-// import ListComponent from './components/ListComponent';
 
 
 function App() {  
