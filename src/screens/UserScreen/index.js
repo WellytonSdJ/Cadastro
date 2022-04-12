@@ -1,5 +1,3 @@
-import { Box, Button, Container, Divider, Paper, Typography } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import './styles.css'
 import { useState, useEffect } from 'react';
 import PasswordModal from '../../components/PasswordModal';
@@ -32,9 +30,6 @@ function UserScreen() {
   return (
     <>
       <PasswordModal togglePassword={togglePassword} handlePwd={handlePwd} id={id} />
-      
-
-      {/* ORGANIZANDO */}
       <main>
         <div className="container">
           <h1>Meus Dados</h1>

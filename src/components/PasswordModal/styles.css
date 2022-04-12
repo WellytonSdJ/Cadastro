@@ -15,7 +15,6 @@
 }
 
 .header-text{
-  /* background: black; */
   color: var(--primary-white);
   font-family: roboto, arial, helvetica, sans-serif;
   font-size: 18px;
@@ -70,15 +69,16 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
+  /* background: red; */
 }
 
 .box__left {
+  background: var(--primary-white);
   width: 30%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--primary-white);
 }
 
 .material-icons.md-lock {
@@ -112,7 +112,7 @@
 .box__right {
   background: var(--primary-white);
   width: 70%;
-  height: 100%;
+  /* height: 100%; */
   padding: 8px;
 
   display: flex;

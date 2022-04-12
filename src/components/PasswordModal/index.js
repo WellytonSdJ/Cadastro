@@ -2,7 +2,7 @@ import './styles.css'
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Modal} from "@mui/material";
+import { Box, Button, Modal } from "@mui/material";
 import validation from '../../utils/validation'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
@@ -51,14 +51,14 @@ function PasswordModal({
   } = useForm({
     defaultValues: {
       currentPassword: '',
-      newPassword:'',
+      newPassword: '',
       currentPassword: ''
     },
     resolver: yupResolver(validation)
   });
 
   const changePassword = async (data) => {
-    console.log('data ->',data)
+    console.log('data ->', data)
     try {
       await axios({
         method: 'post',
@@ -69,7 +69,7 @@ function PasswordModal({
         }
       })
       setOpenSuccessModal(1) // setOpen para o modal de sucesso!
-      
+
     } catch (err) {
       console.error(err)
       setOpenSuccessModal(2) // setOpen para o modal de falha!
@@ -86,7 +86,7 @@ function PasswordModal({
           open={togglePassword}
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
-          keepMounted 
+          keepMounted
         >
           <Box sx={{ ...style }}>
             <div className="box-container">
@@ -150,7 +150,7 @@ function PasswordModal({
                     <div className="fields">
                       <div className="box__right-buttons">
                         <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
-                        <Button className="confirm-btn" variant="contained" type="submit" style={{marginLeft: '30px'}}>Confirmar</Button>
+                        <Button className="confirm-btn" variant="contained" type="submit" style={{ marginLeft: '30px' }}>Confirmar</Button>
                       </div>
                     </div>
                   </form>
@@ -195,7 +195,7 @@ function PasswordModal({
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sm={{ ...style }}>
+        <Box sx={{ ...style }}>
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
