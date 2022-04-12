@@ -10,6 +10,8 @@ main{
 }
 
 .container {
+  /* margin-top: -200px; */
+  margin-bottom: 120px;
   max-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -59,6 +61,10 @@ main{
 }
 
 @media (max-width: 800px) {
+  .container {
+    margin-top: 100px;
+    /* margin-bottom: 120px; */
+  }
   .container-first-item{
     display: flex;
     flex-direction: column;
