@@ -10,7 +10,7 @@ main{
 }
 
 .container {
-  max-width: 60vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,10 +18,12 @@ main{
 }
 
 .box{
+  /* background-color: red; */
   background: var(--secondary-white);
+  width: 80vw;
   border-radius: 6px;
   padding: 0 1rem 1rem 1rem;
-  box-shadow: 0px 0px 5px 0px #000000;  
+  box-shadow: 0px 0px 5px 0px #000000;
 }
 
 .container-first-item{
@@ -42,7 +44,6 @@ main{
   font-size: 14px;
   font-weight: 600;
   padding: 14px;
-  /* background-color: red; */
   background-color: var(--primary-blue);
   text-decoration: none;
   display: inline-block;
