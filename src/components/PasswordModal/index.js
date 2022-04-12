@@ -2,7 +2,7 @@ import './styles.css'
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Modal, Toolbar, AppBar, Typography } from "@mui/material";
+import { Box, Button, Modal} from "@mui/material";
 import validation from '../../utils/validation'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
@@ -16,7 +16,6 @@ const style = {
   width: 700,
   height: 400,
   bgcolor: 'background.paper',
-  // border: '2px solid #000',
   boxShadow: 24,
   pt: 0, // padding top //PADRAO É 2 
   px: 0, // padding X // PADRAO É 4
@@ -47,7 +46,6 @@ function PasswordModal({
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset
   } = useForm({
@@ -70,11 +68,11 @@ function PasswordModal({
           novaSenha: data.newPassword
         }
       })
-      setOpenSuccessModal(1)
-      // caso sucesso setOpen para o modal de sucesso!
+      setOpenSuccessModal(1) // setOpen para o modal de sucesso!
+      
     } catch (err) {
       console.error(err)
-      setOpenSuccessModal(2)
+      setOpenSuccessModal(2) // setOpen para o modal de falha!
     } finally {
       reset(); // limpe os campos
     }
@@ -88,6 +86,7 @@ function PasswordModal({
           open={togglePassword}
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
+          keepMounted 
         >
           <Box sx={{ ...style }}>
             <div className="box-container">
@@ -100,8 +99,6 @@ function PasswordModal({
                 </button>
               </div>
               <div className="box-content">
-
-                {/* SEPARAR CONTEUDO DIREITA / ESQUERDA */}
                 < div className="box__left">
                   <span className="material-icons md-lock">
                     lock
@@ -118,6 +115,7 @@ function PasswordModal({
                         id="currentPassword"
                         className="inputPassword"
                         placeholder="Insira sua senha"
+                        required
                       />
                       <p className="error-message">{errors.currentPassword?.message}</p>
                     </div>
@@ -131,6 +129,7 @@ function PasswordModal({
                         id="newPassword"
                         className="inputPassword"
                         placeholder="Insira sua nova senha"
+                        required
                       />
                       <p className="error-message">{errors.newPassword?.message}</p>
                     </div>
@@ -144,13 +143,14 @@ function PasswordModal({
                         id="confirmNewPassword"
                         className="inputPassword"
                         placeholder="Confirme a nova Senha"
+                        required
                       />
                       <p className="error-message">{errors.confirmNewPassword?.message}</p>
                     </div>
                     <div className="fields">
                       <div className="box__right-buttons">
                         <Button color="inherit" variant="contained" type="button" component={RouterLink} to={"/"}>Cancelar</Button>
-                        <Button color="inherit" variant="contained" type="submit" >Confirmar</Button>
+                        <Button className="confirm-btn" variant="contained" type="submit" style={{marginLeft: '30px'}}>Confirmar</Button>
                       </div>
                     </div>
                   </form>
@@ -176,8 +176,8 @@ function PasswordModal({
                 <span className="material-icons md-48">clear</span>
               </button>
             </div>
-            <div className="box-content">
-              <div className="box-content-success">
+            <div className="box-content-response">
+              <div className="box-content-internal">
                 <span class="material-icons md-48">
                   check_circle
                 </span>
@@ -195,7 +195,7 @@ function PasswordModal({
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style }}>
+        <Box sm={{ ...style }}>
           <div className="box-container">
             <div className="box-header">
               <span className="header-text">Alterando Senha</span>
@@ -203,8 +203,8 @@ function PasswordModal({
                 <span className="material-icons md-48">clear</span>
               </button>
             </div>
-            <div className="box-content">
-              <div className="box-content-success">
+            <div className="box-content-response">
+              <div className="box-content-internal">
                 <span class="material-icons md-48">
                   highlight_off
                 </span>

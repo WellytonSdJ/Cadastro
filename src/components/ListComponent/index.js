@@ -17,7 +17,8 @@ export default function ListComponent({ users }) {
       display:'flex', 
       justifyContent:'center',
       alignItems: 'center',
-      bgcolor: 'red' }}>
+      // bgcolor: 'red'
+       }}>
       <nav aria-label="main mailbox folders">
       <List>          
         { users === [] ? (
